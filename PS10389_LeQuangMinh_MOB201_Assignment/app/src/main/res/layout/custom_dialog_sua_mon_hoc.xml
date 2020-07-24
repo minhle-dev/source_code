@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mã lớp:   "
+            android:textSize="22sp"/>
+
+        <Spinner
+            android:id="@+id/spMaLop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID:              "
+            android:textSize="22sp"/>
+
+        <EditText
+            android:id="@+id/edtID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập mã môn học"
+            android:paddingLeft="15dp"
+            android:focusable="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên Môn:   "
+            android:textSize="22sp"/>
+
+        <EditText
+            android:id="@+id/edtTenMonHoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập vào tên lớp"
+            android:paddingLeft="15dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lịch hoc:   "
+            android:textSize="22sp"/>
+
+        <EditText
+            android:id="@+id/edtLichHoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập vào lịch học"
+            android:paddingLeft="15dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <Button
+            android:id="@+id/btnXoaTrang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xóa trắng"
+            android:layout_marginRight="10dp"
+         />
+        <Button
+            android:id="@+id/btnLuuLop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lưu lớp"
+            android:onClick="onThemLop"/>
+
+    </LinearLayout>
+
+</LinearLayout>

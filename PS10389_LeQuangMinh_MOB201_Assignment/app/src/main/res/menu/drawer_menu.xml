@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view ">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_course"
+            android:icon="@drawable/ic_online_class"
+            android:title="Course" />
+        <item
+            android:id="@+id/nav_maps"
+            android:icon="@drawable/ic_map"
+            android:title="Maps" />
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/ic_newspaper"
+            android:title="News" />
+        <item
+            android:id="@+id/nav_social"
+            android:icon="@drawable/ic_bullhorn"
+            android:title="Social" />
+
+    </group>
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_caidat"
+                android:icon="@drawable/ic_build_black_24dp"
+                android:title="Setting"></item>
+            <item
+                android:id="@+id/nav_thoat"
+                android:icon="@drawable/ic_cancel_black_24dp"
+                android:title="Exit"></item>
+
+        </menu>
+    </item>
+</menu>

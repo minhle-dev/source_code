@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navbot_sinhvien"
+        android:title="Sinh viên"
+        android:icon="@drawable/ic_sinhvien"/>
+    <item
+        android:id="@+id/navBot_lophoc"
+        android:title="Lớp học"
+        android:icon="@drawable/ic_lophoc"/>
+    <item
+        android:id="@+id/navBot_lichthi"
+        android:title="Lịch thi"
+        android:icon="@drawable/ic_lichthi"/>
+    <item
+        android:id="@+id/navBot_lichhoc"
+        android:title="Lịch học"
+        android:icon="@drawable/ic_lichhoc"/>
+</menu>

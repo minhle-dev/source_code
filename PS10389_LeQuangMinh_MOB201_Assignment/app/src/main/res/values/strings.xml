@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PS10389_LeQuangMinh_MOB201_Assignment</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="facebook_app_id">2350603521630812</string>
+    <string name="fb_login_protocol_scheme">fb2350603521630812</string>
+    <string name="api_key">AIzaSyAnJf-KJureANiV-RRSXrSegyCPCPDZTjQ</string>
+    <string name="title_activity_maps">Map</string>
+
+</resources>
