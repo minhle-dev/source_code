@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    >
+
+    <TextView
+        android:id="@+id/tvstt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STT"
+        android:textColor="#000"
+        android:layout_weight="1"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/tvTenSV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TÊN SINH VIÊN"
+        android:textColor="#000"
+        android:layout_weight="3"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/tvNgaySinh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NGÀY SINH"
+        android:textColor="#000"
+        android:layout_weight="3"
+        android:gravity="center"/>
+
+</LinearLayout>

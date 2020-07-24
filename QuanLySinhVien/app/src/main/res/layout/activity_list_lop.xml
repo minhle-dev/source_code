@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListLopActivity"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_backgroud">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Danh sách lớp học"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:fontFamily="monospace"
+        android:layout_marginTop="50dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STT"
+            android:textColor="#000"
+            android:background="@drawable/et_bg"
+            android:layout_weight="1"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MÃ LỚP"
+            android:textColor="#000"
+            android:background="@drawable/et_bg"
+            android:layout_weight="3"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TÊN LỚP"
+            android:textColor="#000"
+            android:background="@drawable/et_bg"
+            android:layout_weight="3"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvAddLop"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"></ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã lớp:"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+            <EditText
+                android:id="@+id/edtMaLop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên lớp:"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+            <EditText
+                android:id="@+id/edtTenLop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:textColor="@color/white" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btnXoaLop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/et_bg"
+                android:text="Xóa "
+                android:textColor="@color/white"
+                android:layout_marginRight="10dp"
+                android:onClick="onXoa"/>
+            <Button
+                android:id="@+id/btnSuaLop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/et_bg"
+                android:text="Sửa"
+                android:textColor="@color/white"
+                android:onClick="onSua"/>
+            <Button
+                android:id="@+id/btnXoaTrang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/et_bg"
+                android:text="Clear"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:onClick="onXoaTrang"/>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
