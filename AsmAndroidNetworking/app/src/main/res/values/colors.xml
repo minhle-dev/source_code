@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FBBBB9</color>
+    <color name="colorPrimaryDark">#80000000</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="maucam">#FF6633</color>
+    <color name="mauden">#000000</color>
+    <color name="mautrang">#FFFFFF</color>
+    <color name="mauvang">#FFFF66</color>
+    <color name="xanhdatroi">#3399FF</color>
+    <color name="mauxam">#BBBBBB</color>
+    <color name="mauhongnhat">#FBBBB9</color>
+
+</resources>

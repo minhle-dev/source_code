@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="30dp">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
+        <petshop.minhle.asmandroidnetworking.CustomView.ClearEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <petshop.minhle.asmandroidnetworking.CustomView.PasswordEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mật Khẩu"
+            app:useStrike="true"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quên mật khẩu ?"
+        android:layout_gravity="right"
+        android:layout_margin="10dp"
+
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đăng Nhập"
+        android:layout_margin="10dp"
+        android:textColor="@color/mauden"
+        android:background="@drawable/bglogin"/>
+</LinearLayout>
