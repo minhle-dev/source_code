@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/gradient_backgroud"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/dk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Đăng Kí"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+
+    <EditText
+        android:id="@+id/edtTaiKhoanDangKy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dk"
+        android:layout_margin="20dp"
+        android:hint="Tên Đăng Nhập"
+        android:textColorHint="@color/white"/>
+
+    <EditText
+        android:id="@+id/edtNhapMatKhau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtTaiKhoanDangKy"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Mật Khẩu"
+        android:textColorHint="@color/white"/>
+
+    <Button
+        android:id="@+id/btnDangKy"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/et_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtNhapMatKhau"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Xác Nhận"
+        android:onClick="btnDangXy"
+        android:textColor="@color/white"/>
+
+</RelativeLayout>

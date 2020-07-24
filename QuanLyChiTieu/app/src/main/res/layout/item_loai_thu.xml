@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:weightSum="5">
+
+        <TextView
+            android:id="@+id/txtLoaiThu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:fontFamily="sans-serif-black"
+            android:text="Loại thu"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_vertical|right"
+            android:weightSum="2">
+
+            <ImageButton
+                android:id="@+id/btnEdit"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_edit_black_24dp"
+                android:backgroundTint="@android:color/holo_blue_dark" />
+
+            <ImageButton
+                android:id="@+id/btnDel"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/ic_delete_forever_black_24dp"
+                android:backgroundTint="@android:color/holo_blue_dark" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
