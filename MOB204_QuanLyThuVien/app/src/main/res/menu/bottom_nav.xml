@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navbot_thongkedoanhso"
+        android:icon="@drawable/ic_doanhso"
+        android:title="Doanh Số"/>
+    <item
+        android:id="@+id/navBot_thongketopsach"
+        android:icon="@drawable/ic_topsach"
+        android:title="Bán Chạy"/>
+</menu>

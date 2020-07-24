@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/gradient_backgroud"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/dk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Đăng Ký Thành Viên"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginTop="84dp"/>
+
+    <EditText
+        android:id="@+id/edtTaiKhoanDangKy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dk"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:hint="Nhập Vào Email"
+        android:textColorHint="@color/white"
+
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/edtNhapMatKhau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtTaiKhoanDangKy"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Nhập Vào Mật Khẩu"
+        android:textColorHint="@color/white"
+        android:textSize="24sp"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/btnDangKy"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/et_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtNhapMatKhau"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Đăng Ký "
+        android:onClick="btnDangXy"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"/>
+
+</RelativeLayout>
