@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.minhle.flickkfinal.R
 import kotlinx.android.synthetic.main.dialog_edit.*
+import java.util.regex.Pattern
 
 
 class EditNameDialogFragment : DialogFragment() {
@@ -57,8 +58,12 @@ class EditNameDialogFragment : DialogFragment() {
 
         if (edt_edit_name.text.toString().trim().isEmpty()) {
             Toast.makeText(context, "Username is not empty", Toast.LENGTH_SHORT).show()
-        } else if (edt_edit_name.text.toString().trim().length < 4 || edt_edit_name.text.toString().trim().length > 20) {
+        } else if (edt_edit_name.text.toString().trim().length < 4 || edt_edit_name.text.toString()
+                .trim().length > 20
+        ) {
             Toast.makeText(context, R.string.invalid_name_condition, Toast.LENGTH_SHORT).show()
+        } else if (!isUsername(edt_edit_name.text.toString().trim())) {
+            Toast.makeText(context, R.string.invalid_character, Toast.LENGTH_SHORT).show()
         } else {
             callback?.onAddUsername(edt_edit_name.text.toString().trim())
             dismiss()
@@ -67,6 +72,14 @@ class EditNameDialogFragment : DialogFragment() {
 
     }
 
+    private fun isUsername(target: CharSequence?): Boolean {
+        return if (target == null) false
+        else USERNAME_PATTERN.matcher(target).matches()
+    }
+
+    val USERNAME_PATTERN = Pattern.compile(
+        "^[A-Za-z]\\w{3,19}$"
+    )
 
 }
 

@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
@@ -33,6 +32,7 @@ import com.minhle.flickkfinal.utils.Constants.Companion.KEY_UID
 import com.minhle.flickkfinal.utils.SharePref
 import com.minhle.flickkfinal.utils.get
 import java.util.concurrent.Executor
+import java.util.regex.Pattern
 
 
 class LoginActivity : BaseActivity() {

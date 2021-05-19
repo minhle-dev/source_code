@@ -24,6 +24,7 @@ import com.minhle.flickkfinal.base.BaseActivity
 import com.minhle.flickkfinal.databinding.ActivitySignupBinding
 import com.minhle.flickkfinal.ui.authentication.LoginRegisterViewModel
 import com.minhle.flickkfinal.ui.authentication.login.LoginActivity
+import java.util.regex.Pattern
 
 
 class SignUpActivity : BaseActivity() {
@@ -102,6 +103,9 @@ class SignUpActivity : BaseActivity() {
             validUser = false
         } else if (binding.edtName.text.toString().trim().length < 4 || binding.edtName.text.toString().trim().length > 20) {
             binding.textInputName.error = resources.getString(R.string.invalid_name_condition)
+            validUser = false
+        }else if (!isUsername(binding.edtName.text.toString().trim())) {
+            binding.textInputName.error = resources.getString(R.string.invalid_character)
             validUser = false
         }
 
@@ -249,6 +253,15 @@ class SignUpActivity : BaseActivity() {
         return if (target == null) false
         else Patterns.EMAIL_ADDRESS.matcher(target).matches()
     }
+
+    private fun isUsername(target: CharSequence?): Boolean {
+        return if (target == null) false
+        else USERNAME_PATTERN.matcher(target).matches()
+    }
+
+    val USERNAME_PATTERN = Pattern.compile(
+        "^[A-Za-z]\\w{3,19}$"
+    )
 
     private fun hideKeyboard(view: View) {
         val inputMethodManager: InputMethodManager =

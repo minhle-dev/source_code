@@ -15,6 +15,7 @@
     <string name="not_match_pass">Retyped password isn\'t matched with password</string>
     <string name="invalid_pass_condition">Password must contains 8 to 20 characters</string>
     <string name="invalid_name_condition">Username must contains 4 to 20 characters</string>
+    <string name="invalid_character">The given username is invalid because it consists of invalid character </string>
     <string name="invalid_pass_duplicate">The new password cannot be the same as the old password</string>
     <string name="empty_error">This field cannot be empty</string>
     <string name="short_pass">This field cannot be empty</string>
@@ -42,6 +43,7 @@
     <string name="edit_username">Edit Username</string>
     <string name="edit_password">Edit password</string>
     <string name="current_password">Current password</string>
+    <string name="title">Title</string>
 
 
 </resources>
