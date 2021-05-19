@@ -23,6 +23,7 @@ import com.minhle.flickkfinal.base.BaseFragment
 import com.minhle.flickkfinal.databinding.FragmentMoviesBinding
 import com.minhle.flickkfinal.model.Movie
 import com.minhle.flickkfinal.ui.viewmodel.MoviesViewModel
+import com.minhle.flickkfinal.utils.isConnected
 import com.minhle.flickkfinal.utils.Resource
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
@@ -31,6 +32,7 @@ import kotlinx.android.synthetic.main.fragment_movies.*
 
 
 class MoviesFragment : BaseFragment() {
+
 
     private val binding: FragmentMoviesBinding
         get() = (getViewBinding() as FragmentMoviesBinding)
@@ -69,6 +71,7 @@ class MoviesFragment : BaseFragment() {
     override fun getLayoutId(): Int = R.layout.fragment_movies
 
     override fun initControls(view: View, savedInstanceState: Bundle?) {
+
         (activity as AppCompatActivity).setSupportActionBar(binding.mainToolBar)
 
         binding.rvMovies.layoutManager =
@@ -97,24 +100,34 @@ class MoviesFragment : BaseFragment() {
             isAutoCycle = true
             startAutoCycle()
         }
+        if (requireContext().isConnected) {
+            refreshData()
+            refreshDataNowPlay()
+            refreshDataRateMovie()
+            refreshSlider()
+            requestPermission()
+        }
+        else {
+            Toast.makeText(context, "No internet", Toast.LENGTH_LONG).show()
+        }
 
 
-
-        refreshData()
-        refreshDataNowPlay()
-        refreshDataRateMovie()
-        refreshSlider()
-        requestPermission()
     }
 
 
     override fun initEvents() {
 
         binding.swipe.setOnRefreshListener {
-            refreshData()
-            refreshDataNowPlay()
-            refreshDataRateMovie()
-            refreshSlider()
+            if (requireContext().isConnected) {
+                refreshData()
+                refreshDataNowPlay()
+                refreshDataRateMovie()
+                refreshSlider()
+                requestPermission()
+            }
+            else {
+                Toast.makeText(context, "No internet", Toast.LENGTH_LONG).show()
+            }
             swipe.isRefreshing = false
         }
 
@@ -286,6 +299,8 @@ class MoviesFragment : BaseFragment() {
     private fun showProgressBar() {
         binding.progressCircular.visibility = View.VISIBLE
     }
+
+
 }
 
 
