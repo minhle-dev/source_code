@@ -37,7 +37,8 @@
                 android:id="@+id/edt_edit_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textCursorDrawable="@drawable/custom_edit_text_cursor"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 

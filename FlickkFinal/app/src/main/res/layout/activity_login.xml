@@ -53,6 +53,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_email"
                 android:text="minhle.dev@gmail.com"
+                android:textCursorDrawable="@drawable/custom_edit_text_cursor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress" />
@@ -74,6 +75,7 @@
                 android:id="@+id/edt_password"
                 android:maxLength="20"
                 android:text="12345678"
+                android:textCursorDrawable="@drawable/custom_edit_text_cursor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"/>
