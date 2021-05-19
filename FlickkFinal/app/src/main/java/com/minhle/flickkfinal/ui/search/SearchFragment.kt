@@ -65,8 +65,6 @@ class SearchFragment : BaseFragment() {
             GridLayoutManager(this.context, 2, RecyclerView.VERTICAL, false)
         binding.rvSearch.setHasFixedSize(true)
         binding.rvSearch.adapter = moviesAdapter
-
-
         searchMovie()
     }
 
@@ -139,7 +137,7 @@ class SearchFragment : BaseFragment() {
         binding.edtSearch.addTextChangedListener { editable ->
             job?.cancel()
             job = MainScope().launch {
-                delay(500)
+                delay(400)
                 editable?.let {
                     if (editable.toString().trim().isNotEmpty()) {
                         moviesViewModel.getSearchMovie(editable.toString().trim(), 1)
