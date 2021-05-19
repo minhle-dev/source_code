@@ -139,10 +139,10 @@ class SearchFragment : BaseFragment() {
         binding.edtSearch.addTextChangedListener { editable ->
             job?.cancel()
             job = MainScope().launch {
-                delay(1000)
+                delay(500)
                 editable?.let {
-                    if (editable.toString().isNotEmpty()) {
-                        moviesViewModel.getSearchMovie(editable.toString(), 1)
+                    if (editable.toString().trim().isNotEmpty()) {
+                        moviesViewModel.getSearchMovie(editable.toString().trim(), 1)
                             .observe(viewLifecycleOwner, {
                                 when (it) {
                                     is Resource.Success -> {
