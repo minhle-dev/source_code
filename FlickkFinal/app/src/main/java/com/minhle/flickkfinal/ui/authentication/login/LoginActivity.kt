@@ -106,7 +106,27 @@ class LoginActivity : BaseActivity() {
                                 )
                             }
                         }
+                }
 
+                override fun onAuthenticationError(
+                    errorCode: Int,
+                    errString: CharSequence
+                ) {
+                    super.onAuthenticationError(errorCode, errString)
+                    Toast.makeText(
+                        applicationContext,
+                        "Authentication error: $errString", Toast.LENGTH_SHORT
+                    )
+                        .show()
+                }
+
+                override fun onAuthenticationFailed() {
+                    super.onAuthenticationFailed()
+                    Toast.makeText(
+                        applicationContext, "Authentication failed",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
                 }
             })
 
@@ -164,7 +184,9 @@ class LoginActivity : BaseActivity() {
         if (binding.edtPassword.text.toString().trim().isEmpty()) {
             binding.textInputPassword.error = resources.getString(R.string.empty_error)
             validPass = false
-        } else if (binding.edtPassword.text.toString().trim().length < 8 || binding.edtPassword.text.toString().trim().length > 20) {
+        } else if (binding.edtPassword.text.toString()
+                .trim().length < 8 || binding.edtPassword.text.toString().trim().length > 20
+        ) {
             binding.textInputPassword.error = resources.getString(R.string.invalid_pass_condition)
             validPass = false
         }
@@ -193,6 +215,7 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun onTextChanged() {
+
         binding.edtEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 

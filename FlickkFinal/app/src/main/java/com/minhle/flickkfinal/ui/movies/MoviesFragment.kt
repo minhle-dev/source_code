@@ -196,7 +196,7 @@ class MoviesFragment : BaseFragment() {
             when (it) {
                 is Resource.Success -> {
                     val item = it.data.movies.subList(0, 5)
-                    sliderImageAdapter.renewItems(item as MutableList<Movie>)
+                    sliderImageAdapter.renewItems(item)
                     hideProgressBar()
                 }
                 is Resource.Error -> {
