@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_item_slider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_auto_image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/cardview_dark_background"
+            android:scaleType="fitXY"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-124dp"
+            android:elevation="4dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_movie_title_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:elevation="5dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.164"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_auto_image_slider"
+            app:layout_constraintVertical_bias="0.888" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

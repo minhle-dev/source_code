@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "264576239360",
+    "project_id": "flickk-movies-app",
+    "storage_bucket": "flickk-movies-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264576239360:android:8aa4fa4606d87682f815e5",
+        "android_client_info": {
+          "package_name": "com.minhle.flickkfinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264576239360-snm4k2ufschrk23k09toh93lpbe40dob.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.minhle.flickkfinal",
+            "certificate_hash": "741c38390696c374b1c8222c181ce57e37d071f4"
+          }
+        },
+        {
+          "client_id": "264576239360-b0gjj3q756dnnmonm1iop1setr11fkke.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCasN6Vwxwu9YH85eeJU33ztZdMtFA0iVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264576239360-b0gjj3q756dnnmonm1iop1setr11fkke.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

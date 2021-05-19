@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_movies">
+
+    <fragment
+        android:id="@+id/nav_movies"
+        android:name="com.minhle.flickkfinal.ui.movies.MoviesFragment"
+        android:label="MoviesFragment" >
+        <action
+            android:id="@+id/action_nav_movies_to_nav_detail"
+            app:destination="@id/nav_detail"
+           />
+        <action
+            android:id="@+id/action_nav_movies_to_nowPlayingFragment"
+            app:destination="@id/nav_now_playing" />
+        <action
+            android:id="@+id/action_nav_movies_to_nav_search"
+            app:destination="@id/nav_search" />
+        <action
+            android:id="@+id/action_nav_movies_to_nav_user"
+            app:destination="@id/nav_user" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.minhle.flickkfinal.ui.search.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_nav_search_to_nav_detail"
+            app:destination="@id/nav_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_user"
+        android:name="com.minhle.flickkfinal.ui.user.UserFragment"
+        android:label="UserFragment" />
+    <fragment
+        android:id="@+id/nav_detail"
+        android:name="com.minhle.flickkfinal.ui.detail.DetailFragment"
+        android:label="DetailFragment" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/nav_now_playing"
+        android:name="com.minhle.flickkfinal.ui.movies.NowPlayingFragment"
+        android:label="NowPlayingFragment" >
+        <action
+            android:id="@+id/action_nav_now_playing_to_nav_detail"
+            app:destination="@id/nav_detail" />
+    </fragment>
+
+</navigation>
