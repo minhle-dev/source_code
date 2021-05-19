@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -133,6 +134,7 @@ class NowPlayingFragment : BaseFragment() {
         job = lifecycleScope.launch {
             moviesViewModel.getMoviesPopular().collectLatest {
                 binding.swipeLayout.isRefreshing = false
+
                 moreMoviesAdapter.submitData(it)
             }
 
@@ -150,4 +152,12 @@ class NowPlayingFragment : BaseFragment() {
             footer = MovieLoadStateAdapter { moreMoviesAdapter.retry() }
         )
     }
+
+  /*  private fun hideProgressBar() {
+        binding.progressCircular.visibility = View.INVISIBLE
+    }
+
+    private fun showProgressBar() {
+        binding.progressCircular.visibility = View.VISIBLE
+    }*/
 }

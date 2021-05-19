@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -86,8 +87,6 @@ class MoviesFragment : BaseFragment() {
         binding.rvRateMovie.adapter = topRateAdapter
 
         //slider
-        //slider
-
         binding.imageSlider.apply {
             setSliderAdapter(sliderImageAdapter)
             setIndicatorAnimation(IndicatorAnimationType.WORM)
@@ -160,24 +159,17 @@ class MoviesFragment : BaseFragment() {
 
     private fun refreshDataRateMovie() {
         moviesViewModel.getTopRated(1).observe(viewLifecycleOwner, {
-            //binding.rvRateMovie.isVisible = it is Resource.Success
-            // binding.nestMovie.isVisible = it is Resource.Success
-            //binding.retryButton.isVisible = (it !is Resource.Loading && it !is Resource.Success)
-            //binding.emptyList.isVisible = (it !is Resource.Loading && it !is Resource.Success)
+            binding.nestMovie.isVisible = it is Resource.Success
             when (it) {
                 is Resource.Success -> {
                     topRateAdapter.movie = it.data.movies
-
-                    binding.swipe.isRefreshing = false
+                    hideProgressBar()
                 }
                 is Resource.Error -> {
-                    binding.swipe.isRefreshing = false
-                    it.message.let { message ->
-                        Toast.makeText(context, "" + message, Toast.LENGTH_SHORT).show()
-                    }
+                    showProgressBar()
                 }
                 is Resource.Loading -> {
-                    binding.swipe.isRefreshing = true
+                    showProgressBar()
 
                 }
             }
@@ -186,25 +178,19 @@ class MoviesFragment : BaseFragment() {
 
     private fun refreshSlider() {
         moviesViewModel.getTopRated(1).observe(viewLifecycleOwner, {
-            // binding.imageSlider.isVisible = it is Resource.Success
-            // binding.nestMovie.isVisible = it is Resource.Success
-            //binding.retryButton.isVisible = (it !is Resource.Loading && it !is Resource.Success)
-            //binding.emptyList.isVisible = (it !is Resource.Loading && it !is Resource.Success)
+
+            binding.nestMovie.isVisible = it is Resource.Success
             when (it) {
                 is Resource.Success -> {
                     val item = it.data.movies.subList(0, 5)
                     sliderImageAdapter.renewItems(item as MutableList<Movie>)
-
-                    binding.swipe.isRefreshing = false
+                    hideProgressBar()
                 }
                 is Resource.Error -> {
-                    binding.swipe.isRefreshing = false
-                    it.message.let { message ->
-                        Toast.makeText(context, "" + message, Toast.LENGTH_SHORT).show()
-                    }
+                    showProgressBar()
                 }
                 is Resource.Loading -> {
-                    binding.swipe.isRefreshing = true
+                    showProgressBar()
 
                 }
             }
@@ -213,23 +199,17 @@ class MoviesFragment : BaseFragment() {
 
     private fun refreshDataNowPlay() {
         moviesViewModel.getNowMovies(1).observe(viewLifecycleOwner, {
-            // binding.rvNowPlay.isVisible = it is Resource.Success
-            //binding.retryButton.isVisible = (it !is Resource.Loading && it !is Resource.Success)
-            //binding.emptyList.isVisible = (it !is Resource.Loading && it !is Resource.Success)
+            binding.nestMovie.isVisible = it is Resource.Success
             when (it) {
                 is Resource.Success -> {
                     nowPlayingAdapter.movie = it.data.movies
-                    binding.swipe.isRefreshing = false
+                    hideProgressBar()
                 }
                 is Resource.Error -> {
-                    binding.swipe.isRefreshing = false
-                    it.message.let { message ->
-                        Toast.makeText(context, "" + message, Toast.LENGTH_SHORT).show()
-                    }
+                    showProgressBar()
                 }
                 is Resource.Loading -> {
-                    binding.swipe.isRefreshing = true
-
+                    showProgressBar()
                 }
             }
         })
@@ -239,24 +219,20 @@ class MoviesFragment : BaseFragment() {
 
     private fun refreshData() {
         moviesViewModel.getPopularMovies(1).observe(viewLifecycleOwner, {
-            //binding.rvMovies.isVisible = it is Resource.Success
-            //binding.retryButton.isVisible = (it !is Resource.Loading && it !is Resource.Success)
-            //binding.emptyList.isVisible = (it !is Resource.Loading && it !is Resource.Success)
-
+            binding.nestMovie.isVisible = it is Resource.Success
             when (it) {
                 is Resource.Success -> {
                     moviesAdapter.movie = it.data.movies
-                    binding.swipe.isRefreshing = false
+                    hideProgressBar()
                 }
                 is Resource.Error -> {
-                    binding.swipe.isRefreshing = false
                     it.message.let { message ->
                         Toast.makeText(context, "" + message, Toast.LENGTH_SHORT).show()
                     }
+                    showProgressBar()
                 }
                 is Resource.Loading -> {
-                    binding.swipe.isRefreshing = true
-
+                    showProgressBar()
                 }
             }
         })
@@ -301,6 +277,14 @@ class MoviesFragment : BaseFragment() {
             .check()
 
 
+    }
+
+    private fun hideProgressBar() {
+        binding.progressCircular.visibility = View.INVISIBLE
+    }
+
+    private fun showProgressBar() {
+        binding.progressCircular.visibility = View.VISIBLE
     }
 }
 

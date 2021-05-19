@@ -1,237 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.product.ProductFragment"
-        >
+        tools:context=".ui.product.ProductFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="1dp"
-        >
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/main_tool_bar"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:menu="@menu/main_menu"
-            app:title="@string/app_name" />
-    </com.google.android.material.appbar.AppBarLayout>
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       >
+            android:elevation="1dp">
 
-        <androidx.core.widget.NestedScrollView
-            android:background="@color/gray"
-            android:id="@+id/nest_movie"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:fitsSystemWindows="true"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbars="vertical"
-            android:visibility="visible">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/main_tool_bar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/gray">
+                android:layout_height="wrap_content"
+                app:menu="@menu/main_menu"
+                app:title="@string/app_name" />
+        </com.google.android.material.appbar.AppBarLayout>
 
-<!--                <TextView-->
-<!--                    android:id="@+id/emptyList"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="@string/no_results"-->
-<!--                    android:textSize="20sp"-->
-<!--                    android:visibility="visible"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintHorizontal_bias="0.0"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    app:layout_constraintVertical_bias="0.284" />-->
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
 
-<!--                <com.google.android.material.button.MaterialButton-->
-<!--                    android:id="@+id/retry_button"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="@string/retry"-->
-<!--                    android:textColor="@color/textColorPrimary"-->
-<!--                    android:visibility="invisible"-->
-<!--                    app:backgroundTint="@color/colorAccent"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/rv_rate_movie"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/cv_slider" />-->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_slider"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="6dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nest_movie"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray"
+                    android:fillViewport="true"
+                    android:fitsSystemWindows="true"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:scrollbars="vertical"
+                    android:visibility="invisible"
+                    >
 
-                    <com.smarteist.autoimageslider.SliderView
-                        android:id="@+id/imageSlider"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="290dp"
-                        android:scaleType="fitXY"
-                        app:sliderAnimationDuration="600"
-                        app:sliderAutoCycleDirection="back_and_forth"
-                        app:sliderAutoCycleEnabled="true"
-                        app:sliderIndicatorAnimationDuration="600"
-                        app:sliderIndicatorGravity="center_horizontal|bottom"
-                        app:sliderIndicatorMargin="15dp"
-                        app:sliderIndicatorOrientation="horizontal"
-                        app:sliderIndicatorPadding="3dp"
-                        app:sliderIndicatorRadius="2dp"
-                        app:sliderIndicatorSelectedColor="@color/TitleBottom"
-                        app:sliderIndicatorUnselectedColor="#201f2f"
-                        app:sliderScrollTimeInSec="1"
-                        app:sliderStartAutoCycle="true" />
+                        android:layout_height="match_parent"
+                        android:background="@color/gray">
 
-                </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_slider"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            app:cardCornerRadius="6dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/txtPopular"
-                    style="@style/TextAppearance.Flickk.Subtitle1"
+                            <com.smarteist.autoimageslider.SliderView
+                                android:id="@+id/imageSlider"
+                                android:layout_width="match_parent"
+                                android:layout_height="290dp"
+                                android:scaleType="fitXY"
+                                app:sliderAnimationDuration="600"
+                                app:sliderAutoCycleDirection="back_and_forth"
+                                app:sliderAutoCycleEnabled="true"
+                                app:sliderIndicatorAnimationDuration="600"
+                                app:sliderIndicatorGravity="center_horizontal|bottom"
+                                app:sliderIndicatorMargin="15dp"
+                                app:sliderIndicatorOrientation="horizontal"
+                                app:sliderIndicatorPadding="3dp"
+                                app:sliderIndicatorRadius="2dp"
+                                app:sliderIndicatorSelectedColor="@color/TitleBottom"
+                                app:sliderIndicatorUnselectedColor="#201f2f"
+                                app:sliderScrollTimeInSec="1"
+                                app:sliderStartAutoCycle="true" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/txtPopular"
+                            style="@style/TextAppearance.Flickk.Subtitle1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/most_popular"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/cv_slider" />
+
+                        <TextView
+                            android:id="@+id/txtPopularMore"
+                            style="@style/TextAppearance.Flickk.Subtitle2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="28dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/more_than"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtPopular"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.958"
+                            app:layout_constraintRight_toRightOf="@+id/txtPopular"
+                            app:layout_constraintStart_toEndOf="@+id/txtPopular"
+                            app:layout_constraintTop_toBottomOf="@+id/cv_slider" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_movies"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtPopular" />
+
+                        <TextView
+                            android:id="@+id/txtRate"
+                            style="@style/TextAppearance.Flickk.Subtitle1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/top_rating"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/rv_movies" />
+
+                        <TextView
+                            android:id="@+id/txtBestRateMore"
+                            style="@style/TextAppearance.Flickk.Subtitle2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="28dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/more_than"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtRate"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.958"
+                            app:layout_constraintRight_toRightOf="@+id/txtPopular"
+                            app:layout_constraintStart_toEndOf="@+id/txtRate"
+                            app:layout_constraintTop_toBottomOf="@+id/rv_movies" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_rate_movie"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtRate" />
+
+
+                        <TextView
+                            android:id="@+id/txtNowPlay"
+                            style="@style/TextAppearance.Flickk.Subtitle1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/now_playing"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/rv_rate_movie" />
+
+                        <TextView
+                            android:id="@+id/txtNowPlayMore"
+                            style="@style/TextAppearance.Flickk.Subtitle2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="28dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/more_than"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtNowPlay"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.958"
+                            app:layout_constraintRight_toRightOf="@+id/txtNowPlay"
+                            app:layout_constraintStart_toEndOf="@+id/txtNowPlay"
+                            app:layout_constraintTop_toBottomOf="@+id/rv_rate_movie" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_now_play"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtNowPlay" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.core.widget.NestedScrollView>
+                <ProgressBar
+                    android:id="@+id/progress_circular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/most_popular"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cv_slider" />
-
-                <TextView
-                    android:id="@+id/txtPopularMore"
-                    style="@style/TextAppearance.Flickk.Subtitle2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/more_than"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtPopular"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.958"
-                    app:layout_constraintRight_toRightOf="@+id/txtPopular"
-                    app:layout_constraintStart_toEndOf="@+id/txtPopular"
-                    app:layout_constraintTop_toBottomOf="@+id/cv_slider" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_movies"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtPopular" />
-
-                <TextView
-                    android:id="@+id/txtRate"
-                    style="@style/TextAppearance.Flickk.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/top_rating"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rv_movies" />
-
-                <TextView
-                    android:id="@+id/txtBestRateMore"
-                    style="@style/TextAppearance.Flickk.Subtitle2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/more_than"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtRate"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.958"
-                    app:layout_constraintRight_toRightOf="@+id/txtPopular"
-                    app:layout_constraintStart_toEndOf="@+id/txtRate"
-                    app:layout_constraintTop_toBottomOf="@+id/rv_movies" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_rate_movie"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtRate" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    />
+            </FrameLayout>
 
 
-                <TextView
-                    android:id="@+id/txtNowPlay"
-                    style="@style/TextAppearance.Flickk.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/now_playing"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rv_rate_movie" />
 
-                <TextView
-                    android:id="@+id/txtNowPlayMore"
-                    style="@style/TextAppearance.Flickk.Subtitle2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/more_than"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtNowPlay"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.958"
-                    app:layout_constraintRight_toRightOf="@+id/txtNowPlay"
-                    app:layout_constraintStart_toEndOf="@+id/txtNowPlay"
-                    app:layout_constraintTop_toBottomOf="@+id/rv_rate_movie" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_now_play"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="80dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtNowPlay" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 </layout>
