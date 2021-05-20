@@ -55,6 +55,21 @@ class NowPlayingFragment : BaseFragment() {
 
     setData()
 
+        binding.toolbarPlay.title = "Polular"
+        val bundle = this.arguments
+        if (bundle != null) {
+                when (bundle.getInt("key_check", 0)) {
+                    1 -> {
+                        binding.toolbarPlay.title = "Now playing"
+                    }
+                    2 -> {
+                        binding.toolbarPlay.title = "Top Rating"
+                    }
+                    3 -> {
+                        binding.toolbarPlay.title = "Most Popular"
+                    }
+                }
+            }
 
     }
 
