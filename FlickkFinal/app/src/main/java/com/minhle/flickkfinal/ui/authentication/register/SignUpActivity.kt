@@ -36,8 +36,6 @@ class SignUpActivity : BaseActivity() {
     private val dialogLoading by lazy {
         Dialog(this)
     }
-    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    private var fireStore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun getLayoutId(): Int = R.layout.activity_signup
 

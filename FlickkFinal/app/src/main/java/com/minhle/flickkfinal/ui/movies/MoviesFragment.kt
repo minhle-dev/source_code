@@ -100,36 +100,22 @@ class MoviesFragment : BaseFragment() {
             isAutoCycle = true
             startAutoCycle()
         }
-        if (requireContext().isConnected) {
-            refreshData()
-            refreshDataNowPlay()
-            refreshDataRateMovie()
-            refreshSlider()
-            requestPermission()
-        }
-        else {
-            Toast.makeText(context, "No internet", Toast.LENGTH_LONG).show()
-        }
+        //setdata n check internet
+        setData()
 
 
     }
 
 
+
     override fun initEvents() {
 
         binding.swipe.setOnRefreshListener {
-            if (requireContext().isConnected) {
-                refreshData()
-                refreshDataNowPlay()
-                refreshDataRateMovie()
-                refreshSlider()
-                requestPermission()
-            }
-            else {
-                Toast.makeText(context, "No internet", Toast.LENGTH_LONG).show()
-            }
-            swipe.isRefreshing = false
+            setData()
+            binding.swipe.isRefreshing = false
         }
+
+        binding.retryButton.setOnClickListener { setData() }
 
         sliderImageAdapter.setOnclickListener {
             val bundle = bundleOf(
@@ -251,6 +237,21 @@ class MoviesFragment : BaseFragment() {
         })
     }
 
+    private fun setData() {
+        if (requireContext().isConnected) {
+            hideNotification()
+            refreshData()
+            refreshDataNowPlay()
+            refreshDataRateMovie()
+            refreshSlider()
+            requestPermission()
+        }
+        else {
+            Toast.makeText(context, getString(R.string.no_internet), Toast.LENGTH_LONG).show()
+            showNotification()
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -298,6 +299,18 @@ class MoviesFragment : BaseFragment() {
 
     private fun showProgressBar() {
         binding.progressCircular.visibility = View.VISIBLE
+    }
+
+    private fun hideNotification() {
+        binding.progressCircular.visibility = View.INVISIBLE
+        binding.emptyList.visibility = View.INVISIBLE
+        binding.retryButton.visibility = View.INVISIBLE
+    }
+
+    private fun showNotification() {
+        binding.progressCircular.visibility = View.INVISIBLE
+        binding.emptyList.visibility = View.VISIBLE
+        binding.retryButton.visibility = View.VISIBLE
     }
 
 

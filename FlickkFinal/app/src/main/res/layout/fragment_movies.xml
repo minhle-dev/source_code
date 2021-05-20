@@ -30,8 +30,7 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <FrameLayout
                 android:layout_width="wrap_content"
@@ -46,8 +45,7 @@
                     android:fitsSystemWindows="true"
                     android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:scrollbars="vertical"
-                    android:visibility="invisible"
-                    >
+                    android:visibility="invisible">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -207,14 +205,44 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.core.widget.NestedScrollView>
+
                 <ProgressBar
                     android:id="@+id/progress_circular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    />
-            </FrameLayout>
+                    android:layout_gravity="center_horizontal|center_vertical" />
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/emptyList"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/no_results"
+                        android:textSize="20sp"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/retry_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="@string/retry"
+                        android:textColor="@color/textColorPrimary"
+                        app:backgroundTint="@color/colorAccent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/emptyList"
+                        android:visibility="invisible"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
 
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

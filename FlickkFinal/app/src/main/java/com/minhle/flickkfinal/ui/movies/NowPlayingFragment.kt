@@ -16,6 +16,7 @@ import com.minhle.flickkfinal.R
 import com.minhle.flickkfinal.base.BaseFragment
 import com.minhle.flickkfinal.databinding.FragmentPlayingBinding
 import com.minhle.flickkfinal.ui.viewmodel.MoviesViewModel
+import com.minhle.flickkfinal.utils.isConnected
 import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
@@ -52,28 +53,12 @@ class NowPlayingFragment : BaseFragment() {
     override fun getLayoutId(): Int = R.layout.fragment_playing
     override fun initControls(view: View, savedInstanceState: Bundle?) {
 
-
-
-        val bundle = this.arguments
-        if (bundle != null) {
-            when (bundle.getInt("key_check", 0)) {
-                1 -> {
-                    setUpRecyclerView()
-                    refreshData()
-                }
-                2 -> {
-                    setUpRecyclerView()
-                    refreshDataTopRate()
-                }
-                3 -> {
-                    setUpRecyclerView()
-                    refreshDataPopular()
-                }
-            }
-        }
+    setData()
 
 
     }
+
+
 
 
     override fun initEvents() {
@@ -82,20 +67,8 @@ class NowPlayingFragment : BaseFragment() {
         }
 
         binding.swipeLayout.setOnRefreshListener {
-            val bundle = this.arguments
-            if (bundle != null) {
-                when (bundle.getInt("key_check", 0)) {
-                    1 -> {
-                        refreshData()
-                    }
-                    2 -> {
-                        refreshDataTopRate()
-                    }
-                    3 -> {
-                        refreshDataPopular()
-                    }
-                }
-            }
+            setData()
+            binding.swipeLayout.isRefreshing = false
         }
 
         moreMoviesAdapter.setOnclickListener {
@@ -104,6 +77,8 @@ class NowPlayingFragment : BaseFragment() {
             )
             controller.navigate(R.id.action_nav_now_playing_to_nav_detail, bundle)
         }
+
+        binding.retryButton.setOnClickListener { setData() }
     }
 
 
@@ -145,19 +120,49 @@ class NowPlayingFragment : BaseFragment() {
         binding.rvNowPlaying.setHasFixedSize(true)
         binding.rvNowPlaying.layoutManager =
             GridLayoutManager(this.context, 2, RecyclerView.VERTICAL, false)
-       /* binding.rvNowPlaying.adapter?.stateRestorationPolicy =
-            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY*/
+        /* binding.rvNowPlaying.adapter?.stateRestorationPolicy =
+             RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY*/
         binding.rvNowPlaying.adapter = moreMoviesAdapter.withLoadStateHeaderAndFooter(
             header = MovieLoadStateAdapter { moreMoviesAdapter.retry() },
             footer = MovieLoadStateAdapter { moreMoviesAdapter.retry() }
         )
     }
 
-  /*  private fun hideProgressBar() {
-        binding.progressCircular.visibility = View.INVISIBLE
+    private fun hideNotification() {
+        binding.emptyList.visibility = View.INVISIBLE
+        binding.retryButton.visibility = View.INVISIBLE
+        binding.rvNowPlaying.visibility = View.VISIBLE
     }
 
-    private fun showProgressBar() {
-        binding.progressCircular.visibility = View.VISIBLE
-    }*/
+    private fun showNotification() {
+        binding.rvNowPlaying.visibility = View.INVISIBLE
+        binding.emptyList.visibility = View.VISIBLE
+        binding.retryButton.visibility = View.VISIBLE
+    }
+    private fun setData() {
+        val bundle = this.arguments
+        if (bundle != null) {
+            if (requireContext().isConnected) {
+                hideNotification()
+                when (bundle.getInt("key_check", 0)) {
+                    1 -> {
+                        setUpRecyclerView()
+                        refreshData()
+                    }
+                    2 -> {
+                        setUpRecyclerView()
+                        refreshDataTopRate()
+                    }
+                    3 -> {
+                        setUpRecyclerView()
+                        refreshDataPopular()
+                    }
+                }
+            }else{
+                Toast.makeText(context, getString(R.string.no_internet), Toast.LENGTH_LONG).show()
+                showNotification()
+            }
+        }
+    }
+
 }

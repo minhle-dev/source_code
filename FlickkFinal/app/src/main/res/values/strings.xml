@@ -44,6 +44,7 @@
     <string name="edit_password">Edit password</string>
     <string name="current_password">Current password</string>
     <string name="title">Title</string>
+    <string name="no_internet">No internet access</string>
 
 
 </resources>

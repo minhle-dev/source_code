@@ -26,6 +26,7 @@ import com.minhle.flickkfinal.model.Movie
 import com.minhle.flickkfinal.ui.movies.MoviesAdapter
 import com.minhle.flickkfinal.ui.viewmodel.MoviesViewModel
 import com.minhle.flickkfinal.utils.Resource
+import com.minhle.flickkfinal.utils.isConnected
 import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
@@ -65,8 +66,13 @@ class SearchFragment : BaseFragment() {
             GridLayoutManager(this.context, 2, RecyclerView.VERTICAL, false)
         binding.rvSearch.setHasFixedSize(true)
         binding.rvSearch.adapter = moviesAdapter
-        searchMovie()
+
+
+        setDataSearch()
+
     }
+
+
 
 
     override fun initEvents() {
@@ -79,8 +85,12 @@ class SearchFragment : BaseFragment() {
         }
 
         binding.swipe.setOnRefreshListener {
-            searchMovie()
+            setDataSearch()
             swipe.isRefreshing = false
+        }
+
+        binding.retryButton.setOnClickListener {
+            setDataSearch()
         }
     }
 
@@ -157,9 +167,14 @@ class SearchFragment : BaseFragment() {
                                     }
                                     is Resource.Error -> {
                                         binding.swipe.isRefreshing = false
-                                        binding.txtNotiSearch.isVisible = true
+                                        binding.txtNotiSearch.isVisible = false
+
                                         it.message.let { message ->
-                                            Toast.makeText(context, "" + message, Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(
+                                                context,
+                                                "" + message,
+                                                Toast.LENGTH_SHORT
+                                            ).show()
                                         }
 
                                     }
@@ -182,6 +197,28 @@ class SearchFragment : BaseFragment() {
         )
 
         controller.navigate(R.id.action_nav_search_to_nav_detail, bundle)
+    }
+
+    private fun hideNotification() {
+        binding.emptyList.visibility = View.INVISIBLE
+        binding.retryButton.visibility = View.INVISIBLE
+        binding.rvSearch.visibility = View.VISIBLE
+    }
+
+    private fun showNotification() {
+        binding.rvSearch.visibility = View.INVISIBLE
+        binding.emptyList.visibility = View.VISIBLE
+        binding.retryButton.visibility = View.VISIBLE
+    }
+
+    private fun setDataSearch() {
+        if (requireContext().isConnected) {
+            hideNotification()
+            searchMovie()
+        } else {
+            showNotification()
+            Toast.makeText(context, getString(R.string.no_internet), Toast.LENGTH_LONG).show()
+        }
     }
 
 }
