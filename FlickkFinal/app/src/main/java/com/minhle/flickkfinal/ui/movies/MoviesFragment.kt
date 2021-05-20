@@ -247,7 +247,7 @@ class MoviesFragment : BaseFragment() {
             requestPermission()
         }
         else {
-            Toast.makeText(context, getString(R.string.no_internet), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.no_internet), Toast.LENGTH_SHORT).show()
             showNotification()
         }
     }
@@ -306,12 +306,14 @@ class MoviesFragment : BaseFragment() {
         binding.progressCircular.visibility = View.INVISIBLE
         binding.emptyList.visibility = View.INVISIBLE
         binding.retryButton.visibility = View.INVISIBLE
+        binding.nestMovie.visibility = View.VISIBLE
     }
 
     private fun showNotification() {
         binding.progressCircular.visibility = View.INVISIBLE
         binding.emptyList.visibility = View.VISIBLE
         binding.retryButton.visibility = View.VISIBLE
+        binding.nestMovie.visibility = View.INVISIBLE
     }
 
 

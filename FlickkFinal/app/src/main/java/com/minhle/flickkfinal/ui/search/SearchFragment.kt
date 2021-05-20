@@ -217,7 +217,7 @@ class SearchFragment : BaseFragment() {
             searchMovie()
         } else {
             showNotification()
-            Toast.makeText(context, getString(R.string.no_internet), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.no_internet), Toast.LENGTH_SHORT).show()
         }
     }
 

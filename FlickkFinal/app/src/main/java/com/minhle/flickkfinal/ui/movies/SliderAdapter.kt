@@ -46,10 +46,10 @@ class SliderAdapter(private val context: Context) :
 
         Glide.with(viewHolder.itemView)
             .load("https://image.tmdb.org/t/p/w500${sliderItem.backdropPath}")
-            .fitCenter()
             .apply(RequestOptions.bitmapTransform(RoundedCorners(1  )))
             .thumbnail(0.1f)
             .error(R.drawable.broken_image)
+            .fitCenter()
             .into(viewHolder.imageViewBackground)
 
         viewHolder.itemView.setOnClickListener {
