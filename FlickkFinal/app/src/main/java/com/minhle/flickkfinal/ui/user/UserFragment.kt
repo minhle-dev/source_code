@@ -3,12 +3,14 @@ package com.minhle.flickkfinal.ui.user
 import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.view.Window
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
@@ -38,8 +40,8 @@ import com.minhle.flickkfinal.utils.put
 
 
 @Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "DEPRECATED_IDENTITY_EQUALS")
-class UserFragment : BaseFragment() ,EditNameDialogFragment.OnAddUsernameListener{
-   private var imageUri: Uri? = null
+class UserFragment : BaseFragment(), EditNameDialogFragment.OnAddUsernameListener {
+    private var imageUri: Uri? = null
 
     private var fireStore: FirebaseFirestore = FirebaseFirestore.getInstance()
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -50,6 +52,10 @@ class UserFragment : BaseFragment() ,EditNameDialogFragment.OnAddUsernameListene
 
     private val controller by lazy {
         findNavController()
+    }
+
+    private val dialogLoading by lazy {
+        Dialog(requireContext())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,6 +69,11 @@ class UserFragment : BaseFragment() ,EditNameDialogFragment.OnAddUsernameListene
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun initControls(view: View, savedInstanceState: Bundle?) {
+        //setup dialog
+        dialogLoading.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialogLoading.setCancelable(false)
+        dialogLoading.setContentView(R.layout.dialog_loading)
+
         getInfoUser()
 
         loggedInViewModel = ViewModelProvider(this).get(LoggedInViewModel::class.java)
@@ -148,6 +159,9 @@ class UserFragment : BaseFragment() ,EditNameDialogFragment.OnAddUsernameListene
         builder.create().show()
     }
 
+
+
+
     private fun showGalleryDialogue() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
@@ -173,22 +187,28 @@ class UserFragment : BaseFragment() ,EditNameDialogFragment.OnAddUsernameListene
         if (requestCode === GALLERY_PICK && resultCode === RESULT_OK) {
 
             val uri = data?.data!!
+            dialogLoading.show()
             val timestamp = System.currentTimeMillis().toString()
             val path = "Photos/photos_$timestamp"
             val storageReference = FirebaseStorage.getInstance().getReference(path)
             storageReference.putFile(uri).addOnSuccessListener { taskSnapshot ->
                 val task: Task<Uri> = taskSnapshot.metadata!!.reference!!.downloadUrl
                 task.addOnSuccessListener { uri ->
+                    dialogLoading.dismiss()
                     val photoId = uri.toString()
                     imageUri = uri
                     context?.let {
                         Glide.with(it).load(imageUri).centerCrop()
+                            .thumbnail(0.1f)
                             .into(binding.profileImage)
+
                     }
                     val user = FirebaseAuth.getInstance().currentUser
                     val userId = user.uid
                     fireStore.collection("Users").document(userId).update("imageUrl", photoId)
                         .addOnSuccessListener {}
+                }.addOnFailureListener {
+                    dialogLoading.dismiss()
                 }
             }
         }
@@ -196,12 +216,14 @@ class UserFragment : BaseFragment() ,EditNameDialogFragment.OnAddUsernameListene
 
         if (requestCode === CAMERA_PICK && resultCode === RESULT_OK) {
             val uri = imageUri!!
+            dialogLoading.show()
             val timestamp = System.currentTimeMillis().toString()
             val path = "Photos/photos_$timestamp"
             val ref = FirebaseStorage.getInstance().getReference(path)
             ref.putFile(uri).addOnSuccessListener { taskSnapshot ->
                 val task: Task<Uri> = taskSnapshot.metadata!!.reference!!.downloadUrl
                 task.addOnSuccessListener { uri ->
+                    dialogLoading.dismiss()
                     val photoId = uri.toString()
                     val user = FirebaseAuth.getInstance().currentUser
                     val userId = user.uid
@@ -209,21 +231,28 @@ class UserFragment : BaseFragment() ,EditNameDialogFragment.OnAddUsernameListene
 
                     context?.let {
                         Glide.with(it).load(imageUri).centerCrop()
+                            .thumbnail(0.1f)
                             .into(binding.profileImage)
                     }
                     fireStore.collection("Users").document(userId).update("imageUrl", photoId)
                         .addOnSuccessListener {}
+                }.addOnFailureListener {
+                    dialogLoading.dismiss()
                 }
             }
         }
     }
 
-   /* @SuppressLint("UseCompatLoadingForDrawables")
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        getInfoUser()
-    }
-*/
+    /* @SuppressLint("UseCompatLoadingForDrawables")
+     override fun onActivityCreated(savedInstanceState: Bundle?) {
+         super.onActivityCreated(savedInstanceState)
+         getInfoUser()
+     }
+ */
+
+
+
+
     private fun getInfoUser() {
         val userId: String = firebaseAuth.currentUser.uid
 
@@ -244,8 +273,8 @@ class UserFragment : BaseFragment() ,EditNameDialogFragment.OnAddUsernameListene
                         binding.profileImage.setImageDrawable(resources.getDrawable(R.drawable.ic_user))
                     }
 
-                }else{
-                    Toast.makeText(context,R.string.default_error_msg,Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, R.string.default_error_msg, Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -274,7 +303,6 @@ class UserFragment : BaseFragment() ,EditNameDialogFragment.OnAddUsernameListene
             .addOnSuccessListener {}
         getInfoUser()
     }
-
 
 
 }

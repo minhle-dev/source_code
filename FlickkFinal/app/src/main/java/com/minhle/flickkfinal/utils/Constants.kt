@@ -10,7 +10,7 @@ class Constants {
         const val KEY_UID = "KEY_UID"
         const val  EDIT_TEXT_BUNDLE_KEY = " EDIT_TEXT_BUNDLE_KEY"
 
-        const val CAMERA_PICK = 100 // CAMERA A
-        const val GALLERY_PICK = 200 // GALLERY PIC
+        const val CAMERA_PICK = 1001 // CAMERA A
+        const val GALLERY_PICK = 1002 // GALLERY PIC
     }
 }
