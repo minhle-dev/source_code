@@ -209,6 +209,7 @@ class UserFragment : BaseFragment(), EditNameDialogFragment.OnAddUsernameListene
                         .addOnSuccessListener {}
                 }.addOnFailureListener {
                     dialogLoading.dismiss()
+                    Toast.makeText(context,"Update failure",Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -238,6 +239,7 @@ class UserFragment : BaseFragment(), EditNameDialogFragment.OnAddUsernameListene
                         .addOnSuccessListener {}
                 }.addOnFailureListener {
                     dialogLoading.dismiss()
+                    Toast.makeText(context,"Update failure",Toast.LENGTH_SHORT).show()
                 }
             }
         }
