@@ -25,7 +25,6 @@ class NowPlayingFragment : BaseFragment() {
         MoreMoviesAdapter()
     }
 
-
     private var job: Job? = null
 
 
@@ -53,21 +52,21 @@ class NowPlayingFragment : BaseFragment() {
 
         setData()
 
-        binding.toolbarPlay.title = "Polular"
+
         val bundle = this.arguments
         if (bundle != null) {
-                when (bundle.getInt("key_check", 0)) {
-                    1 -> {
-                        binding.toolbarPlay.title = "Now playing"
-                    }
-                    2 -> {
-                        binding.toolbarPlay.title = "Top Rating"
-                    }
-                    3 -> {
-                        binding.toolbarPlay.title = "Most Popular"
-                    }
+            when (bundle.getInt("key_check", 0)) {
+                1 -> {
+                    binding.toolbarPlay.title = "Now playing"
+                }
+                2 -> {
+                    binding.toolbarPlay.title = "Top Rating"
+                }
+                3 -> {
+                    binding.toolbarPlay.title = "Most Popular"
                 }
             }
+        }
 
     }
 
@@ -131,10 +130,12 @@ class NowPlayingFragment : BaseFragment() {
         binding.rvNowPlaying.setHasFixedSize(true)
         binding.rvNowPlaying.layoutManager =
             GridLayoutManager(this.context, 2, RecyclerView.VERTICAL, false)
+
         binding.rvNowPlaying.adapter = moreMoviesAdapter.withLoadStateHeaderAndFooter(
             header = MovieLoadStateAdapter { moreMoviesAdapter.retry() },
             footer = MovieLoadStateAdapter { moreMoviesAdapter.retry() }
         )
+
     }
 
     private fun hideNotification() {
@@ -148,6 +149,7 @@ class NowPlayingFragment : BaseFragment() {
         binding.emptyList.visibility = View.VISIBLE
         binding.retryButton.visibility = View.VISIBLE
     }
+
     private fun setData() {
         val bundle = this.arguments
         if (bundle != null) {
@@ -167,7 +169,7 @@ class NowPlayingFragment : BaseFragment() {
                         refreshDataPopular()
                     }
                 }
-            }else{
+            } else {
                 Toast.makeText(context, getString(R.string.no_internet), Toast.LENGTH_SHORT).show()
                 showNotification()
             }
