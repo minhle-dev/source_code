@@ -101,6 +101,8 @@ class DetailFragment : BaseFragment() {
             getTrailerYoutube(movie!!)
             swipe.isRefreshing = false
         }
+
+
         binding.toolbarDetail.setNavigationOnClickListener {
             controller.popBackStack()
         }

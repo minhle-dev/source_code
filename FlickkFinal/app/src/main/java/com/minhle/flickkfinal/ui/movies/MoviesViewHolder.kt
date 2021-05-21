@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.minhle.flickkfinal.R
@@ -34,6 +35,7 @@ class MoviesViewHolder(
             .apply(RequestOptions.bitmapTransform(RoundedCorners(1  )))
             .thumbnail(0.1f)
             .error(R.drawable.broken_image)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(binding.movieImage)
 
         binding.txtMovieTitle.text = movie.title

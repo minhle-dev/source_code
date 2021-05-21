@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
@@ -200,6 +201,7 @@ class UserFragment : BaseFragment(), EditNameDialogFragment.OnAddUsernameListene
                     context?.let {
                         Glide.with(it).load(imageUri).centerCrop()
                             .thumbnail(0.1f)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(binding.profileImage)
 
                     }
@@ -233,6 +235,7 @@ class UserFragment : BaseFragment(), EditNameDialogFragment.OnAddUsernameListene
                     context?.let {
                         Glide.with(it).load(imageUri).centerCrop()
                             .thumbnail(0.1f)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(binding.profileImage)
                     }
                     fireStore.collection("Users").document(userId).update("imageUrl", photoId)
@@ -269,6 +272,7 @@ class UserFragment : BaseFragment(), EditNameDialogFragment.OnAddUsernameListene
                             .load(imageUrl)
                             .centerCrop()
                             .error(R.drawable.ic_user)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(binding.profileImage)
                     } else {
                         binding.profileImage.setImageDrawable(resources.getDrawable(R.drawable.ic_user))

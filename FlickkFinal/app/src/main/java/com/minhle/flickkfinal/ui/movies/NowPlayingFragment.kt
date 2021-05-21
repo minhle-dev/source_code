@@ -52,7 +52,6 @@ class NowPlayingFragment : BaseFragment() {
 
         setData()
 
-
         val bundle = this.arguments
         if (bundle != null) {
             when (bundle.getInt("key_check", 0)) {

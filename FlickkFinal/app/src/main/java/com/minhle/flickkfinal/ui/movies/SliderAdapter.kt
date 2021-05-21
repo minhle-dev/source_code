@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.textview.MaterialTextView
@@ -50,6 +51,7 @@ class SliderAdapter(private val context: Context) :
             .thumbnail(0.1f)
             .error(R.drawable.broken_image)
             .fitCenter()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(viewHolder.imageViewBackground)
 
         viewHolder.itemView.setOnClickListener {
