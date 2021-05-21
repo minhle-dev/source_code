@@ -134,7 +134,7 @@ class UserFragment : BaseFragment(), EditNameDialogFragment.OnAddUsernameListene
             editDialog.setTargetFragment(this, 0)
             editDialog.show(fm, "fragment_dialog")
         }
-
+    
         binding.tvChangePass.setOnClickListener {
             val fm: FragmentManager = requireFragmentManager()
             val editDialog: DialogFragment = EditPasswordDialogFragment()

@@ -1,11 +1,13 @@
 package com.minhle.flickkfinal.ui.movies
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -32,8 +34,7 @@ import kotlinx.android.synthetic.main.fragment_movies.*
 
 
 class MoviesFragment : BaseFragment() {
-
-
+    private var doubleBackToExitPressedOnce: Boolean = false
     private val binding: FragmentMoviesBinding
         get() = (getViewBinding() as FragmentMoviesBinding)
     private val controller by lazy {
@@ -64,6 +65,19 @@ class MoviesFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
+        //back to exit
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (doubleBackToExitPressedOnce) {
+                    activity?.onBackPressed()
+                    return
+                }
+                this.isEnabled = false
+                Toast.makeText(context, "Press back again to exit", Toast.LENGTH_SHORT).show()
+                Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+            }
+
+        })
 
     }
 
@@ -71,6 +85,7 @@ class MoviesFragment : BaseFragment() {
     override fun getLayoutId(): Int = R.layout.fragment_movies
 
     override fun initControls(view: View, savedInstanceState: Bundle?) {
+
 
         (activity as AppCompatActivity).setSupportActionBar(binding.mainToolBar)
 
@@ -105,7 +120,6 @@ class MoviesFragment : BaseFragment() {
 
 
     }
-
 
 
     override fun initEvents() {
@@ -245,8 +259,7 @@ class MoviesFragment : BaseFragment() {
             refreshDataRateMovie()
             refreshSlider()
             requestPermission()
-        }
-        else {
+        } else {
             Toast.makeText(context, getString(R.string.no_internet), Toast.LENGTH_SHORT).show()
             showNotification()
         }
@@ -315,7 +328,6 @@ class MoviesFragment : BaseFragment() {
         binding.retryButton.visibility = View.VISIBLE
         binding.nestMovie.visibility = View.INVISIBLE
     }
-
 
 }
 

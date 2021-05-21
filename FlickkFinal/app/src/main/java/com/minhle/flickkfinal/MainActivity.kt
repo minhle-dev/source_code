@@ -1,27 +1,15 @@
 package com.minhle.flickkfinal
 
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
-import androidx.navigation.ui.*
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.minhle.flickkfinal.ui.authentication.LoggedInViewModel
-import kotlinx.android.synthetic.main.app_bar_main.*
 
 
 class MainActivity : AppCompatActivity() {
-
-    private var loggedInViewModel: LoggedInViewModel? = null
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,7 +55,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun showTitleNav(txtTitle: String) {
+
+
+
+    /*private fun showTitleNav(txtTitle: String) {
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
             toolbarTitle.text = txtTitle
@@ -91,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             setDisplayShowHomeEnabled(true)
         }
     }
-
+*/
     /*override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
