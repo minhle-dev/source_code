@@ -3,9 +3,7 @@ package com.minhle.flickkfinal.ui.movies
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -17,7 +15,6 @@ import com.minhle.flickkfinal.base.BaseFragment
 import com.minhle.flickkfinal.databinding.FragmentPlayingBinding
 import com.minhle.flickkfinal.ui.viewmodel.MoviesViewModel
 import com.minhle.flickkfinal.utils.isConnected
-import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -27,6 +24,7 @@ class NowPlayingFragment : BaseFragment() {
     private val moreMoviesAdapter by lazy {
         MoreMoviesAdapter()
     }
+
 
     private var job: Job? = null
 
@@ -53,7 +51,7 @@ class NowPlayingFragment : BaseFragment() {
     override fun getLayoutId(): Int = R.layout.fragment_playing
     override fun initControls(view: View, savedInstanceState: Bundle?) {
 
-    setData()
+        setData()
 
         binding.toolbarPlay.title = "Polular"
         val bundle = this.arguments
@@ -72,8 +70,6 @@ class NowPlayingFragment : BaseFragment() {
             }
 
     }
-
-
 
 
     override fun initEvents() {
@@ -135,8 +131,6 @@ class NowPlayingFragment : BaseFragment() {
         binding.rvNowPlaying.setHasFixedSize(true)
         binding.rvNowPlaying.layoutManager =
             GridLayoutManager(this.context, 2, RecyclerView.VERTICAL, false)
-        /* binding.rvNowPlaying.adapter?.stateRestorationPolicy =
-             RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY*/
         binding.rvNowPlaying.adapter = moreMoviesAdapter.withLoadStateHeaderAndFooter(
             header = MovieLoadStateAdapter { moreMoviesAdapter.retry() },
             footer = MovieLoadStateAdapter { moreMoviesAdapter.retry() }

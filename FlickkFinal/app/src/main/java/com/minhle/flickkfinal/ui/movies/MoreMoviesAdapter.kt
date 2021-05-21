@@ -8,21 +8,17 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.minhle.flickkfinal.R
 import com.minhle.flickkfinal.model.Movie
-import kotlinx.android.synthetic.main.item_movie.view.*
 
 
-class MoreMoviesAdapter :
+class MoreMoviesAdapter() :
     PagingDataAdapter<Movie, MoreMoviesAdapter.MovieViewHolder>(MOVIE_COMPARATOR) {
 
 
@@ -68,8 +64,9 @@ class MoreMoviesAdapter :
             }
 
 
+            @SuppressLint("DiffUtilEquals")
             override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean =
-                oldItem.equals(newItem)
+                oldItem == newItem
         }
     }
 
@@ -77,6 +74,7 @@ class MoreMoviesAdapter :
     fun setOnclickListener(listener: (Movie) -> Unit) {
         onItemClickListener = listener
     }
+
 }
 
 

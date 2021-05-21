@@ -1,7 +1,6 @@
 package com.minhle.flickkfinal.ui.movies
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -25,8 +24,8 @@ import com.minhle.flickkfinal.base.BaseFragment
 import com.minhle.flickkfinal.databinding.FragmentMoviesBinding
 import com.minhle.flickkfinal.model.Movie
 import com.minhle.flickkfinal.ui.viewmodel.MoviesViewModel
-import com.minhle.flickkfinal.utils.isConnected
 import com.minhle.flickkfinal.utils.Resource
+import com.minhle.flickkfinal.utils.isConnected
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
@@ -34,7 +33,7 @@ import kotlinx.android.synthetic.main.fragment_movies.*
 
 
 class MoviesFragment : BaseFragment() {
-    private var doubleBackToExitPressedOnce: Boolean = false
+    private var pressedTime: Long = 0
     private val binding: FragmentMoviesBinding
         get() = (getViewBinding() as FragmentMoviesBinding)
     private val controller by lazy {
@@ -68,13 +67,14 @@ class MoviesFragment : BaseFragment() {
         //back to exit
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (doubleBackToExitPressedOnce) {
-                    activity?.onBackPressed()
-                    return
+
+                if (pressedTime + 2000 > System.currentTimeMillis()) {
+                  
+                    activity?.finish()
+                } else {
+                    Toast.makeText(context, "Press back again to exit", Toast.LENGTH_SHORT).show();
                 }
-                this.isEnabled = false
-                Toast.makeText(context, "Press back again to exit", Toast.LENGTH_SHORT).show()
-                Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+                pressedTime = System.currentTimeMillis()
             }
 
         })

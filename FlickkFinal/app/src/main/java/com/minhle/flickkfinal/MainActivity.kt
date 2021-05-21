@@ -1,12 +1,24 @@
 package com.minhle.flickkfinal
 
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.ui.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.minhle.flickkfinal.ui.authentication.LoggedInViewModel
+import kotlinx.android.synthetic.main.app_bar_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -56,7 +68,15 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
+/*    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
+        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+    }*/
 
     /*private fun showTitleNav(txtTitle: String) {
         setSupportActionBar(toolbar)

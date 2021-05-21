@@ -257,7 +257,6 @@ class UserFragment : BaseFragment(), EditNameDialogFragment.OnAddUsernameListene
 
     private fun getInfoUser() {
         val userId: String = firebaseAuth.currentUser.uid
-
         fireStore.collection("Users").document(userId).get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
